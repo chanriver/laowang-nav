@@ -39,7 +39,6 @@ export default {
         { key: 'baidu', name: '百度', url: 'https://www.baidu.com/s?wd=' },
         { key: 'bing', name: 'Bing', url: 'https://www.bing.com/search?q=' },
         { key: 'github', name: 'GitHub', url: 'https://github.com/search?q=' },
-        { key: 'stack', name: 'Stack', url: 'https://stackoverflow.com/search?q=' },
       ],
     };
   },

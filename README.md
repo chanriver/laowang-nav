@@ -78,45 +78,6 @@
 
 ### ☁️ 一键部署到云平台
 
-无需服务器，完全免费，一键即可部署：
-
-| 平台 | 类型 | 部署链接 |
-|------|------|----------|
-| **Vercel** | Serverless（推荐） | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tony-wang1990/laowang-nav) |
-| **Netlify** | Serverless | [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tony-wang1990/laowang-nav) |
-| **Cloudflare Pages** | Edge Computing | [![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?repository=https://github.com/tony-wang1990/laowang-nav) |
-| **Railway** | Container | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/tony-wang1990/laowang-nav) |
-| **Render** | Container | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tony-wang1990/laowang-nav) |
-
----
-
-### 🐳 Docker 部署（推荐 VPS/NAS 用户）
-
-#### 快速启动
-
-```bash
-docker run -d \
-  --name laowang-nav \
-  --restart unless-stopped \
-  -p 3000:8080 \
-  ghcr.io/tony-wang1990/laowang-nav:latest
-```
-
-访问 `http://localhost:3000` 即可！
-
-#### 使用 Docker Compose
-
-```yaml
-version: '3.8'
-services:
-  laowang-nav:
-    image: ghcr.io/tony-wang1990/laowang-nav:latest
-    container_name: laowang-nav
-    restart: unless-stopped
-    ports:
-      - "3000:8080"
-    environment:
-      - NODE_ENV=production
 ```
 
 启动：

@@ -14,7 +14,7 @@
     "loading": "加载中"
   },
   "login": {
-    "title": "Dashy",
+    "title": "LaoWang Nav",
     "guest-label": "访客访问",
     "username-label": "用户名",
     "password-label": "密码",
@@ -136,7 +136,7 @@
     "open": "打开"
   },
   "updates": {
-    "app-version-note": "Dashy 版本",
+    "app-version-note": "LaoWang v1.0",
     "up-to-date": "已经是最新版了",
     "out-of-date": "存在可用更新",
     "unsupported-version-l1": "你使用的是不受支持的 Dashy 版本",

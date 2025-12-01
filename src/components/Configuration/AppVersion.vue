@@ -2,7 +2,7 @@
   <div class="app-version" v-if="isVersionValid()">
     <!-- Current Version -->
     <p>
-      {{ $t('updates.app-version-note') }} {{ appVersion }}
+      {{ $t('updates.app-version-note') }}
     </p>
     <div v-if="checksEnabled">
       <!-- Results haven't come in yet, either still checking, or error -->

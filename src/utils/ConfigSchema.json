@@ -732,6 +732,12 @@
           "default": false,
           "description": "Prevents the app storing local click count, required for the last-used and most-used sort orders"
         },
+        "enableErrorStatusIndicators": {
+          "title": "Enable Error Status Indicators",
+          "type": "boolean",
+          "default": false,
+          "description": "Show visual indicators when a service is down"
+        },
         "enableErrorReporting": {
           "title": "Enable Error Reporting",
           "type": "boolean",

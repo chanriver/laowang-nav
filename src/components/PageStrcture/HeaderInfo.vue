@@ -163,67 +163,67 @@ export default {
   white-space: nowrap;
   min-height: 48px;
 
-  .info-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    
-    span {
-      color: var(--settings-text-color);
-      line-height: 1.3;
-    }
-    
-    .date, .temp {
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-    
-    .weekday, .condition {
-      font-size: 0.8rem;
-      opacity: 0.75;
-    }
-  }
-
-  .divider {
-    width: 1px;
-    height: 2.5rem;
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.6rem 1rem;
-    gap: 0.8rem;
-    min-height: 42px;
-    
     .info-item {
-      .date, .temp {
-        font-size: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      
+      span {
+        color: var(--settings-text-color);
+        line-height: 1.3;
       }
-      .weekday, .condition {
-        font-size: 0.75rem;
-      }
-    }
-    
-    .divider {
-      height: 2rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    gap: 0.6rem;
-    padding: 0.5rem 0.8rem;
-    min-height: 38px;
-    
-    .info-item {
-      gap: 0.1rem;
       
       .date, .temp {
-        font-size: 0.85rem;
+        font-size: 1.2rem;
+        font-weight: 600;
       }
+      
       .weekday, .condition {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
+        opacity: 0.75;
       }
     }
-  }
+
+    .divider {
+      width: 1px;
+      height: 2.5rem;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.6rem 1rem;
+      gap: 0.8rem;
+      min-height: 42px;
+      
+      .info-item {
+        .date, .temp {
+          font-size: 1.05rem;
+        }
+        .weekday, .condition {
+          font-size: 0.8rem;
+        }
+      }
+      
+      .divider {
+        height: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      gap: 0.6rem;
+      padding: 0.5rem 0.8rem;
+      min-height: 38px;
+      
+      .info-item {
+        gap: 0.1rem;
+        
+        .date, .temp {
+          font-size: 0.95rem;
+        }
+        .weekday, .condition {
+          font-size: 0.75rem;
+        }
+      }
+    }
 }
 </style>

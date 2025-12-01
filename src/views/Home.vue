@@ -24,24 +24,25 @@
     </div>
     <!-- Main content, section for each group of items -->
     <div v-if="checkTheresData(sections) || isEditMode" :class="computedClass">
-      <template v-for="(section, index) in filteredSections">
-        <Section
-          :key="index"
-          :index="index"
-          :title="section.name"
-          :icon="section.icon || undefined"
-          :displayData="getDisplayData(section)"
-          :groupId="makeSectionId(section)"
-          :items="section.filteredItems"
-          :widgets="section.widgets"
-          :searchTerm="searchValue"
-          :itemSize="itemSizeBound"
-          @itemClicked="finishedSearching()"
-          @change-modal-visibility="updateModalVisibility"
-          :isWide="!!singleSectionView || layoutOrientation === 'horizontal'"
-          :class="(searchValue && section.filteredItems.length === 0) ? 'no-results' : ''"
-        />
-      </template>
+
+      <Section
+        v-for="(section, index) in filteredSections"
+        :key="index"
+        :index="index"
+        :title="section.name"
+        :icon="section.icon || undefined"
+        :displayData="getDisplayData(section)"
+        :groupId="makeSectionId(section)"
+        :items="section.filteredItems"
+        :widgets="section.widgets"
+        :searchTerm="searchValue"
+        :itemSize="itemSizeBound"
+        @itemClicked="finishedSearching()"
+        @change-modal-visibility="updateModalVisibility"
+        :isWide="!!singleSectionView || layoutOrientation === 'horizontal'"
+        :class="(searchValue && section.filteredItems.length === 0) ? 'no-results' : ''"
+      />
+      <!-- Show add new section button, in edit mode -->
       <!-- Show add new section button, in edit mode -->
       <AddNewSection v-if="isEditMode && !singleSectionView" />
     </div>
@@ -304,12 +305,14 @@ export default {
 
 /* Web search engine selector container */
 .web-search-container {
-  max-width: 90%;
   margin: 1rem auto 0.5rem;
-  
-  @include monitor-up {
-    max-width: 85%;
-  }
+  @include phone { --content-max-width: 100%; }
+  @include tablet { --content-max-width: 98%; }
+  @include laptop { --content-max-width: 90%; }
+  @include monitor { --content-max-width: 85%; }
+  @include big-screen { --content-max-width: 80%; }
+  @include big-screen-up { --content-max-width: 60%; }
+  max-width: var(--content-max-width, 90%);
 }
 
 /* Header bar container for settings and info */
