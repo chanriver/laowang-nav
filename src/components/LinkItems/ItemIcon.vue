@@ -184,8 +184,9 @@ export default {
     },
     /* Formats the URL for fetching the generative icons */
     getGenerativeIcon(url, cdn) {
-      const host = encodeURI(url) || Math.random().toString();
-      return (cdn || iconCdns.generative).replace('{icon}', asciiHash(host));
+      const host = this.getHostName(url) || url || 'default';
+      // For UI Avatars, use the hostname directly instead of hash
+      return (cdn || iconCdns.generative).replace('{icon}', encodeURIComponent(host));
     },
     /* Returns the SVG path content  */
     getSimpleIcon(img) {

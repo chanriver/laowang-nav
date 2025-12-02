@@ -11,7 +11,7 @@
             :key="index"
             :to="link.path"
             class="nav-item"
-          >{{link.title}}
+          ><span class="nav-text">{{link.title}}</span>
           </router-link>
           <a v-else
             :key="index"
@@ -19,7 +19,7 @@
             :target="determineTarget(link)"
             class="nav-item"
             rel="noopener noreferrer"
-          >{{link.title}}
+          ><span class="nav-text">{{link.title}}</span>
           </a>
         </template>
       </nav>
@@ -88,23 +88,44 @@ export default {
     display: flex;
     align-items: center;
     .nav-item {
-      display: inline-block;
-      padding: 0.75rem 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.2rem;
       margin: 0.5rem;
       min-width: 5rem;
+      min-height: 70px;
       text-align: center;
       outline: none;
       border: none;
       border-radius: var(--curve-factor);
       box-shadow: var(--nav-link-shadow);
-      color: var(--nav-link-text-color);
       background: var(--nav-link-background-color);
       border: 1px solid var(--nav-link-border-color);
       text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+
+      .nav-text {
+        background: linear-gradient(90deg,
+          #ff0000 0%,
+          #ff7f00 14%,
+          #ffff00 28%,
+          #00ff00 42%,
+          #00ffff 57%,
+          #0000ff 71%,
+          #8b00ff 85%,
+          #ff0000 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: rainbowFlow 10s linear infinite;
+      }
+
       &.router-link-active, &:hover {
-        color: var(--nav-link-text-color-hover);
-        background: var(--nav-link-background-color-hover);
-        border: 1px solid var(--nav-link-border-color-hover);
+        transform: translateY(-2px);
         box-shadow: var(--nav-link-shadow-hover);
       }
     }
@@ -119,6 +140,15 @@ export default {
     display: none;
     &.visible { display: block; }
     @include phone { display: block; }
+  }
+}
+
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
   }
 }
 

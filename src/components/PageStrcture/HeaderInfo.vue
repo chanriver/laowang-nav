@@ -37,7 +37,7 @@ export default {
       const month = String(now.getMonth() + 1).padStart(2, '0');
       const day = String(now.getDate()).padStart(2, '0');
       this.currentDate = `${year}年${month}月${day}日`;
-      
+
       const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
       this.currentWeekday = weekdays[now.getDay()];
     },
@@ -55,13 +55,13 @@ export default {
     },
     translateWeather(desc) {
       const translations = {
-        'Clear': '晴',
-        'Sunny': '晴',
+        Clear: '晴',
+        Sunny: '晴',
         'Partly cloudy': '多云',
-        'Cloudy': '阴',
-        'Overcast': '阴',
-        'Mist': '薄雾',
-        'Fog': '雾',
+        Cloudy: '阴',
+        Overcast: '阴',
+        Mist: '薄雾',
+        Fog: '雾',
         'Light rain': '小雨',
         'Moderate rain': '中雨',
         'Heavy rain': '大雨',
@@ -113,7 +113,7 @@ export default {
       const month = String(now.getMonth() + 1).padStart(2, '0');
       const day = String(now.getDate()).padStart(2, '0');
       this.currentDate = `${year}年${month}月${day}日`;
-      
+
       const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
       this.currentWeekday = weekdays[now.getDay()];
     },
@@ -156,31 +156,42 @@ export default {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--curve-factor);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
   white-space: nowrap;
-  min-height: 48px;
+  min-height: 70px;
 
     .info-item {
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
-      
+
       span {
-        color: var(--settings-text-color);
+        background: linear-gradient(90deg,
+          #ff0000 0%,
+          #ff7f00 14%,
+          #ffff00 28%,
+          #00ff00 42%,
+          #00ffff 57%,
+          #0000ff 71%,
+          #8b00ff 85%,
+          #ff0000 100%
+        );
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: rainbowFlow 10s linear infinite;
         line-height: 1.3;
       }
-      
+
       .date, .temp {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         font-weight: 600;
       }
-      
+
       .weekday, .condition {
-        font-size: 0.9rem;
-        opacity: 0.75;
+        font-size: 0.95rem;
+        font-weight: 500;
       }
     }
 
@@ -191,19 +202,19 @@ export default {
     }
 
     @media (max-width: 768px) {
-      padding: 0.6rem 1rem;
+      padding: 0.8rem 1.2rem;
       gap: 0.8rem;
-      min-height: 42px;
-      
+      min-height: 60px;
+
       .info-item {
         .date, .temp {
-          font-size: 1.05rem;
+          font-size: 1.1rem;
         }
         .weekday, .condition {
-          font-size: 0.8rem;
+          font-size: 0.85rem;
         }
       }
-      
+
       .divider {
         height: 2rem;
       }
@@ -211,19 +222,28 @@ export default {
 
     @media (max-width: 480px) {
       gap: 0.6rem;
-      padding: 0.5rem 0.8rem;
-      min-height: 38px;
-      
+      padding: 0.6rem 1rem;
+      min-height: 50px;
+
       .info-item {
         gap: 0.1rem;
-        
+
         .date, .temp {
-          font-size: 0.95rem;
+          font-size: 1rem;
         }
         .weekday, .condition {
-          font-size: 0.75rem;
+          font-size: 0.8rem;
         }
       }
     }
+}
+
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
 }
 </style>

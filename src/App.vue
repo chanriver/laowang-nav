@@ -5,7 +5,7 @@
     <Header :pageInfo="pageInfo" />
     <router-view v-if="!isFetching" />
     <CriticalError v-if="hasCriticalError" />
-    <Footer :text="footerText" v-if="visibleComponents.footer && !isFetching" />
+    <Footer v-if="visibleComponents.footer && !isFetching" />
   </div>
 </template>
 <script>
@@ -49,10 +49,7 @@ export default {
     },
   },
   computed: {
-    /* If the user has specified custom text for footer - get it */
-    footerText() {
-      return this.pageInfo && this.pageInfo.footerText ? this.pageInfo.footerText : '';
-    },
+
     /* Determine if splash screen should be shown */
     shouldShowSplash() {
       return (this.appConfig.showSplashScreen);

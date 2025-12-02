@@ -16,7 +16,9 @@
 
 Demo 演示站
 
-https://demo-nav.zeabur.app/
+[https://demo-nav.zeabur.app/](https://demo-nav.zeabur.app/)
+
+![Home](docs/screenshots/screenshot-1.png)
 
 ---
 
@@ -260,7 +262,9 @@ sections:
 
 ## 🙏 致谢
 
-感谢 [Alicia Sykes][Dashy] 创建了如此优秀的开源项目。
+感谢 [DASHY](https://github.com/Lissy93/dashy) 项目。
+
+基于该项目，本项目增加了本地化和一些使用小组件。
 
 ---
 

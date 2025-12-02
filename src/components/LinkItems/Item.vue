@@ -272,21 +272,26 @@ export default {
 .tile-title {
   white-space: nowrap;
   text-overflow: ellipsis;
-  min-width: 120px;
+  min-width: 100px;
+  max-width: 100%;
+  width: 100%;
   height: 30px;
   position: relative;
-  padding: 0;
+  padding: 0 0.5rem;
   z-index: 2;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-break: keep-all;
   overflow: hidden;
+  box-sizing: border-box;
+
   span.text {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
+    max-width: 100%;
   }
 }
 
@@ -350,16 +355,22 @@ p.description {
     padding-left: 0.5rem;
     div img {
       width: 2rem;
+      flex-shrink: 0;
     }
     .tile-title {
       height: fit-content;
       min-height: 1.2rem;
       text-align: left;
-      max-width: 12rem;
+      max-width: calc(100% - 3rem);
+      min-width: 80px;
       overflow: hidden;
+      padding: 0 0.5rem;
+      flex-grow: 1;
+
       span.text {
         text-align: left;
-        padding-left: 10%;
+        padding-left: 0;
+        max-width: 100%;
       }
     }
   }
@@ -372,14 +383,19 @@ p.description {
     div img {
       width: 2.5rem;
       margin-bottom: 0.25rem;
+      flex-shrink: 0;
     }
     .tile-title {
-      min-width: 100px;
-      max-width: 160px;
+      min-width: 80px;
+      max-width: calc(100% - 1rem);
+      width: 100%;
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+
       &.no-icon {
         text-align: left;
         width: 100%;
-        max-width: inherit;
+        max-width: 100%;
         margin-left: 0.5rem;
       }
     }

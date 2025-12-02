@@ -10,28 +10,9 @@
         <span>Description</span>
         <input v-model="formElements.description" />
       </div>
-      <div class="row">
-        <span>Footer Text</span>
-        <input v-model="formElements.footerText" />
       </div>
     </div>
-    <div class="form">
-      <h2>Nav Bar Links</h2>
-      <div class="add-nav-bar-link" v-for="(link, index) in formElements.navLinks" :key="index">
-        <div class="row">
-          <span>Link Text</span>
-          <input v-model="link.title" />
-        </div>
-        <div class="row">
-          <span>Link URL</span>
-          <input v-model="link.path" />
-        </div>
-      </div>
-      <button class="add-new-link" @click="addNavLinkRow()" >
-        <AddNewIcon />
-        Add New Link
-      </button>
-    </div>
+
     <button class="save-button" @click="save()">
       <SaveConfigIcon />
       Save Changes
@@ -59,25 +40,18 @@ export default {
       const pageInfo = { ...this.config.pageInfo };
       pageInfo.title = this.formElements.title;
       pageInfo.description = this.formElements.description;
-      pageInfo.footerText = this.formElements.footerText;
-      if (this.formElements.navLinks) {
-        pageInfo.navLinks = this.formElements.navLinks.filter(link => (link.title !== ''));
-      }
+
       localStorage.setItem(localStorageKeys.PAGE_INFO, JSON.stringify(pageInfo));
       this.$toasted.show('Changes saved successfully');
       setTimeout(() => { location.reload(); }, 1500); // eslint-disable-line no-restricted-globals
     },
-    addNavLinkRow() {
-      this.formElements.navLinks.push({ title: '', path: '' });
-    },
+
   },
   data() {
     return {
       formElements: {
         title: this.config.pageInfo.title,
         description: this.config.pageInfo.description,
-        footerText: this.config.pageInfo.footerText,
-        navLinks: this.config.pageInfo.navLinks || [],
       },
     };
   },

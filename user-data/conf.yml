@@ -8,9 +8,6 @@ appConfig:
 pageInfo:
   title: LaoWang Nav
   description: 您的个人导航站
-  navLinks:
-  - title: GitHub
-    path: https://github.com/tony-wang1990/laowang-nav
 sections:
 
   - name: Home

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="searchSubmitted" :class="minimalSearch ? 'minimal' : 'normal'">
+  <div :class="minimalSearch ? 'minimal' : 'normal'">
     <label for="filter-tiles">{{ $t('search.search-label') }}</label>
     <div class="search-wrap">
       <input
@@ -9,29 +9,13 @@
         :placeholder="$t('search.search-placeholder')"
         v-on:input="userIsTypingSomething"
         @keydown.esc="clearFilterInput" />
-        <p v-if="(!searchPrefs.disableWebSearch) && input.length > 0" class="web-search-note">
-          {{ $t('search.enter-to-search-web') }}
-        </p>
       </div>
-      <i v-if="input.length > 0"
-        class="clear-search"
-        :title="$t('search.clear-search-tooltip')"
-        @click="clearFilterInput">x</i>
-  </form>
+  </div>
 </template>
 
 <script>
-import router from '@/router';
 import ArrowKeyNavigation from '@/utils/ArrowKeyNavigation';
-import ErrorHandler from '@/utils/ErrorHandler';
 import { getCustomKeyShortcuts } from '@/utils/ConfigHelpers';
-import { getSearchEngineFromBang, findUrlForSearchEngine, stripBangs } from '@/utils/Search';
-import {
-  searchEngineUrls,
-  defaultSearchEngine,
-  defaultSearchOpeningMethod,
-  searchBangs as defaultSearchBangs,
-} from '@/utils/defaults';
 
 export default {
   name: 'FilterTile',
@@ -48,9 +32,6 @@ export default {
   computed: {
     active() {
       return !this.$store.state.modalOpen;
-    },
-    searchPrefs() {
-      return this.$store.getters.webSearch || {};
     },
   },
   mounted() {
@@ -103,46 +84,6 @@ export default {
         }
       });
     },
-    /* Launch search results, with users desired opening method */
-    launchWebSearch(url, method) {
-      switch (method) {
-        case 'newtab':
-          window.open(url, '_blank');
-          break;
-        case 'sametab':
-          window.open(url, '_self');
-          break;
-        case 'workspace':
-          router.push({ name: 'workspace', query: { url } });
-          break;
-        default:
-          ErrorHandler(`Unknown opening method: ${method}`);
-          window.open(url, '_blank');
-      }
-    },
-
-    /* Launch web search, to correct search engine, passing in users query */
-    searchSubmitted() {
-      // Get search preferences from appConfig
-      const { searchPrefs } = this;
-      if (!searchPrefs.disableWebSearch) { // Only proceed if user hasn't disabled web search
-        const bangList = { ...defaultSearchBangs, ...(searchPrefs.searchBangs || {}) };
-        const openingMethod = searchPrefs.openingMethod || defaultSearchOpeningMethod;
-        const searchBang = getSearchEngineFromBang(this.input, bangList);
-        const searchEngine = searchPrefs.searchEngine || defaultSearchEngine;
-        // Use either search bang, or preffered search engine
-        const desiredSearchEngine = searchBang || searchEngine;
-        const isCustomSearch = (searchPrefs.searchEngine === 'custom' && searchPrefs.customSearchEngine);
-        let searchUrl = isCustomSearch
-          ? searchPrefs.customSearchEngine
-          : findUrlForSearchEngine(desiredSearchEngine, searchEngineUrls);
-        if (searchUrl) { // Append search query to URL, and launch
-          searchUrl += encodeURIComponent(stripBangs(this.input, bangList));
-          this.launchWebSearch(searchUrl, openingMethod);
-          this.clearFilterInput();
-        }
-      }
-    },
   },
 };
 </script>
@@ -151,7 +92,7 @@ export default {
 
 @import '@/styles/media-queries.scss';
 
-  form.normal {
+  div.normal {
     display: flex;
     align-items: center;
     border-radius: 0 0 var(--curve-factor-navbar) 0;
@@ -161,12 +102,6 @@ export default {
       display: flex;
       flex-direction: column;
       width: 100%;
-      p.web-search-note {
-        margin: 0 0.5rem;
-        font-size: 0.8rem;
-        color: var(--minimal-view-search-color);
-        opacity: var(--dimming-factor);
-      }
     }
     label {
         display: inline;
@@ -213,13 +148,13 @@ export default {
   }
 
   @include tablet {
-    form.normal {
+    div.normal {
       display: block;
       text-align: center;
     }
   }
   @include phone {
-    form.nomral {
+    div.normal {
       flex: 1;
       border-radius: 0;
       text-align: center;
@@ -228,7 +163,7 @@ export default {
     }
   }
 
-  form.minimal {
+  div.minimal {
     display: flex;
     align-items: center;
     label { display: none; }
@@ -237,11 +172,6 @@ export default {
       flex-direction: column;
       align-items: center;
       width: 100%;
-      p.web-search-note {
-        margin: 0;
-        color: var(--minimal-view-search-color);
-        opacity: var(--dimming-factor);
-      }
     }
     input {
       display: inline-block;

@@ -213,8 +213,8 @@ module.exports = {
     mdi: 'https://cdn.jsdelivr.net/npm/@mdi/font@7.0.96/css/materialdesignicons.min.css',
     si: 'https://unpkg.com/simple-icons@v7/icons',
     sh: 'https://cdn.jsdelivr.net/gh/selfhst/icons@latest/webp/{icon}.webp',
-    generative: 'https://api.dicebear.com/7.x/identicon/svg?seed={icon}',
-    generativeFallback: 'https://evatar.io/{icon}',
+    generative: 'https://ui-avatars.com/api/?name={icon}&size=128&background=random&color=fff&bold=true&format=svg',
+    generativeFallback: 'https://ui-avatars.com/api/?name={icon}&size=128&background=4A90E2&color=fff&bold=true&format=svg',
     localPath: './item-icons',
     faviconName: 'favicon.ico',
     homeLabIcons:

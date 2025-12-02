@@ -11,7 +11,7 @@
       <!-- PageTitle removed to prevent duplicate text -->
       <div class="header-right">
         <HeaderInfo class="header-weather" />
-        <Nav v-if="navVisible" :links="pageInfo.navLinks" class="nav" />
+        <Nav v-if="navVisible" :links="hardcodedLinks" class="nav" />
       </div>
     </header>
 </template>
@@ -31,6 +31,17 @@ export default {
   },
   props: {
     pageInfo: Object,
+  },
+  data() {
+    return {
+      // 硬编码的链接，无法通过配置修改
+      hardcodedLinks: [
+        {
+          title: 'GitHub',
+          path: 'https://github.com/tony-wang1990/laowang-nav',
+        },
+      ],
+    };
   },
   computed: {
     componentVisible() {
@@ -76,7 +87,7 @@ export default {
     display: flex;
     align-items: center;
     gap: 1rem;
-    
+
     @include phone {
       flex-direction: column;
       gap: 0.5rem;
@@ -104,17 +115,23 @@ export default {
     margin: 0;
     font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     letter-spacing: -0.5px;
-    background: linear-gradient(135deg, 
-      var(--primary) 0%, 
-      var(--heading-text-color) 50%,
-      var(--primary) 100%);
-    background-size: 200% 200%;
+    background: linear-gradient(90deg,
+      #ff0000 0%,   /* 红 */
+      #ff7f00 14%,  /* 橙 */
+      #ffff00 28%,  /* 黄 */
+      #00ff00 42%,  /* 绿 */
+      #00ffff 57%,  /* 青 */
+      #0000ff 71%,  /* 蓝 */
+      #8b00ff 85%,  /* 紫 */
+      #ff0000 100%  /* 回到红 */
+    );
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: none;
-    animation: gradientShift 6s ease infinite;
-    
+    animation: rainbowFlow 10s linear infinite;
+
     .trademark {
       position: absolute;
       top: 0.2rem;
@@ -122,19 +139,30 @@ export default {
       font-size: 1.1rem;
       font-weight: 700;
       opacity: 0.9;
-      background: var(--primary);
+      background: linear-gradient(90deg,
+        #ff0000 0%,
+        #ff7f00 14%,
+        #ffff00 28%,
+        #00ff00 42%,
+        #00ffff 57%,
+        #0000ff 71%,
+        #8b00ff 85%,
+        #ff0000 100%
+      );
+      background-size: 200% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: rainbowFlow 10s linear infinite;
     }
   }
 
-  @keyframes gradientShift {
-    0%, 100% {
+  @keyframes rainbowFlow {
+    0% {
       background-position: 0% 50%;
     }
-    50% {
-      background-position: 100% 50%;
+    100% {
+      background-position: 200% 50%;
     }
   }
 
@@ -142,10 +170,10 @@ export default {
     .title-glass-wrapper {
       padding: 0.8rem 2rem;
     }
-    
+
     .text-logo {
       font-size: 1.8rem;
-      
+
       .trademark {
         font-size: 0.7rem;
         top: 0.2rem;

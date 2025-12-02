@@ -294,13 +294,20 @@ export default {
 
 /* Custom styles only applied when there is no sections in config */
 .no-data {
-    font-size: 2rem;
-    color: var(--background);
-    background: #ffffffeb;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    line-height: 1.8;
+    color: var(--settings-text-color);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     width: fit-content;
     margin: 2rem auto;
-    padding: 0.5rem 1rem;
-    border-radius: var(--curve-factor);
+    padding: 1.2rem 3rem;
+    border-radius: calc(var(--curve-factor) * 1.5);
 }
 
 /* Web search engine selector container */
@@ -320,21 +327,21 @@ export default {
   display: flex;
   align-items: stretch;
   gap: 0.5rem;
-  
+
   .settings-outer {
     flex: 0 1 auto;
   }
-  
+
   .header-info-component {
     flex-shrink: 0;
     align-self: center;
     margin-left: 0.5rem;
   }
-  
+
   @media (max-width: 900px) {
     flex-direction: column;
     gap: 0.5rem;
-    
+
     .header-info-component {
       align-self: stretch;
       margin-left: 0;

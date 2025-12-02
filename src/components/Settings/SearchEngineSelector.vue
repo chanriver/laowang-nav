@@ -15,7 +15,6 @@
         v-model="searchQuery"
         :placeholder="`${currentEngineName} 搜索...`"
         @keydown.enter="performSearch"
-        @input="emitSearch"
         class="search-input"
       />
       <button @click="performSearch" class="search-btn">
@@ -61,13 +60,6 @@ export default {
         const searchUrl = this.currentEngineUrl + encodeURIComponent(this.searchQuery);
         window.open(searchUrl, '_blank');
       }
-    },
-    emitSearch() {
-      this.$emit('user-is-searchin', this.searchQuery);
-    },
-    clearSearch() {
-      this.searchQuery = '';
-      this.emitSearch();
     },
   },
 };
@@ -126,9 +118,9 @@ export default {
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: var(--curve-factor);
-    padding: 1.2rem 1.5rem;
+    padding: 0.8rem 1.2rem;
     transition: all 0.3s ease;
-    min-height: 56px;
+    min-height: 48px;
 
     &:focus-within {
       background: rgba(255, 255, 255, 0.15);
@@ -185,7 +177,7 @@ export default {
     .search-input-container {
       padding: 0.9rem 1.2rem;
       min-height: 48px;
-      
+
       .search-input {
         font-size: 1rem;
       }

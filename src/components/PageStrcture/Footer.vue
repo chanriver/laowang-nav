@@ -1,11 +1,9 @@
 <template>
   <footer v-if="visible">
-    <!-- User-defined footer -->
-    <span v-if="text" v-html="text"></span>
-    <!-- Default footer -->
-    <span v-else>
-      <a :href="defaultInfo.projectUrl">LaoWang Nav</a> is a personal dashboard.
-      © <a :href="defaultInfo.authorUrl">{{defaultInfo.authorName}}</a> {{defaultInfo.date}}.
+    <!-- 硬编码的页脚，无法通过配置修改 -->
+    <span>
+      <a :href="projectUrl">LaoWang Nav</a> is a personal dashboard.
+      © <a :href="authorUrl">{{authorName}}</a> {{currentYear}}.
     </span>
   </footer>
 </template>
@@ -16,21 +14,13 @@ import { shouldBeVisible } from '@/utils/SectionHelpers';
 
 export default {
   name: 'Footer',
-  props: {
-    text: String,
-  },
   data() {
     return {
-      defaultInfo: {
-        authorName: 'LaoWang',
-        authorUrl: 'https://github.com/tony-wang1990',
-        license: 'MIT',
-        licenseUrl: 'https://github.com/tony-wang1990/laowang-nav/blob/master/LICENSE',
-        date: `${new Date().getFullYear()}`,
-        repoUrl: 'https://github.com/tony-wang1990/laowang-nav',
-        repoName: 'tony-wang1990/laowang-nav',
-        projectUrl: 'https://github.com/tony-wang1990/laowang-nav',
-      },
+      // 硬编码的值，无法通过配置修改
+      projectUrl: 'https://github.com/tony-wang1990/laowang-nav',
+      authorName: 'LaoWang',
+      authorUrl: 'https://github.com/tony-wang1990',
+      currentYear: new Date().getFullYear(),
     };
   },
   computed: {
@@ -72,6 +62,7 @@ footer {
 
 footer a{
   color: var(--footer-text-color);
+  text-decoration: none;
   &:hover {
     color: var(--footer-text-color-link);
   }

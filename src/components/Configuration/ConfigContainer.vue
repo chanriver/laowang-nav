@@ -220,20 +220,29 @@ a.config-button, button.config-button {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
   background: var(--config-settings-background);
   color: var(--config-settings-color);
   border: 1px solid var(--config-settings-color);
   margin: 0.5rem auto;
-  min-width: 15rem;
+  min-width: clamp(12rem, 20vw, 18rem);
+  max-width: 100%;
   width: 100%;
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   svg.button-icon {
+    flex-shrink: 0;
     path {
       fill: var(--config-settings-color);
     }
-    width: 1rem;
-    height: 1rem;
+    width: clamp(0.8rem, 1.2vw, 1rem);
+    height: clamp(0.8rem, 1.2vw, 1rem);
     padding: 0.2rem;
+    margin-left: 0.5rem;
   }
   &:hover:not(.disallowed) {
     background: var(--config-settings-color);
@@ -241,6 +250,24 @@ a.config-button, button.config-button {
     svg path {
       fill: var(--config-settings-background);
     }
+  }
+
+  @media (max-width: 1200px) {
+    font-size: 1rem;
+    min-width: 14rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 0.95rem;
+    min-width: 12rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.9rem;
+    min-width: 10rem;
+    padding: 0.4rem 0.6rem;
   }
 }
 
@@ -322,11 +349,26 @@ div.code-container {
   background: var(--config-settings-background);
   height: calc(100% + 1rem);
   width: fit-content;
+  min-width: min(90vw, 400px);
+  max-width: 90vw;
   margin: 0 auto;
   padding: 2rem 1rem 0;
+  box-sizing: border-box;
+
   h2 {
     margin: 0 auto 1rem auto;
     color: var(--config-settings-color);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  }
+
+  @media (max-width: 900px) {
+    min-width: min(85vw, 350px);
+    padding: 1.5rem 0.8rem 0;
+  }
+
+  @media (max-width: 600px) {
+    min-width: min(90vw, 300px);
+    padding: 1rem 0.5rem 0;
   }
 }
 
