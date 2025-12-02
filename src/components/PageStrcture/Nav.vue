@@ -56,7 +56,8 @@ export default {
     },
   },
   created() {
-    this.navVisible = !this.detectMobile();
+    // Always show nav, do not collapse into burger menu
+    this.navVisible = true;
     this.isMobile = this.detectMobile();
   },
   methods: {
@@ -133,13 +134,15 @@ export default {
   /* Mobile and Burger-Menu Styles */
   @extend .svg-button;
   @include phone {
-    width: 100%;
-    nav { flex-wrap: wrap; }
+    display: none !important;
   }
+  
   .burger {
     display: none;
-    &.visible { display: block; }
-    @include phone { display: block; }
+    /* Only show burger if there are many links, but for now user wants GitHub visible. 
+       We will hide burger and show links directly as requested for the "folded github" issue. */
+    /* &.visible { display: block; } */
+    /* @include phone { display: block; } */
   }
 }
 

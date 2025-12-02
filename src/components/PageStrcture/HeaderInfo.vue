@@ -207,6 +207,10 @@ export default {
       min-height: 60px;
 
       .info-item {
+        /* Keep column layout for tablets as per original design */
+        flex-direction: column; 
+        gap: 0.2rem;
+
         .date, .temp {
           font-size: 1.1rem;
         }
@@ -220,20 +224,36 @@ export default {
       }
     }
 
-    @media (max-width: 480px) {
-      gap: 0.6rem;
-      padding: 0.6rem 1rem;
-      min-height: 50px;
+    /* Mobile styles (approx < 600px) */
+    @media (max-width: 600px) {
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+      min-height: auto;
+      width: 100%;
+      justify-content: center;
 
       .info-item {
-        gap: 0.1rem;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.3rem;
 
         .date, .temp {
           font-size: 1rem;
         }
-        .weekday, .condition {
-          font-size: 0.8rem;
+        
+        /* Hide weekday on mobile to save space for single line */
+        .weekday {
+            display: none;
         }
+        
+        .condition {
+          font-size: 0.9rem;
+        }
+      }
+
+      .divider {
+        height: 1.2rem;
+        margin: 0 0.2rem;
       }
     }
 }

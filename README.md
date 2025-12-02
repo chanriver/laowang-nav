@@ -22,15 +22,6 @@ Demo 演示站
 
 ---
 
-## ✨ 特性
-
-- 🚀 **极速加载**: 经过优化的代码，秒级响应。
-- 🎨 **多主题支持**: 内置多种精美主题，支持自定义 CSS。
-- ☁️ **多云一键部署**: 支持 Zeabur、Render 等平台一键部署。
-- 🔍 **集成搜索引擎**: 内置 Google, Baidu, Bing, GitHub 等常用搜索。
-- 🌦️ **实时天气**: 首页集成实时天气显示。
-- 📱 **响应式设计**: 完美适配手机、平板和桌面端。
-- 🔒 **隐私优先**: 所有数据掌握在自己手中。
 
 <div align="center">
 
@@ -38,15 +29,29 @@ Demo 演示站
 | :---: | :---: |
 | ![Home](docs/screenshots/screenshot-1.png) | ![Search](docs/screenshots/screenshot-2.png) |
 
-| 移动端适配 | 设置面板 |
+| 移动端适配 (新版) | 设置面板 |
 | :---: | :---: |
-| ![Mobile](docs/screenshots/screenshot-3.png) | ![Settings](docs/screenshots/screenshot-4.png) |
+| ![Mobile New](docs/screenshots/mobile-v2.jpg)<br>支持全网搜索与引擎切换 | ![Settings](docs/screenshots/screenshot-4.png) |
 
 | 多彩主题 |
 | :---: |
 | ![Themes](docs/screenshots/screenshot-5.png) |
 
 </div>
+
+---
+
+## ✨ 特性
+
+- 🚀 **极速加载**: 经过优化的代码，秒级响应。
+- 🎨 **多主题支持**: 内置多种精美主题，支持自定义 CSS。
+- ☁️ **多云一键部署**: 支持 Zeabur、Render 等平台一键部署。
+- 🔍 **集成搜索引擎**: 
+  - 桌面端：站内快速筛选。
+  - **移动端**：支持 Baidu/Bing/Google 全网搜索切换。
+- 🌦️ **实时天气**: 首页集成实时天气显示。
+- 📱 **响应式设计**: 完美适配手机、平板和桌面端。
+- 🔒 **隐私优先**: 所有数据掌握在自己手中。
 
 ---
 

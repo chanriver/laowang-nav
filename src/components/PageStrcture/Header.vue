@@ -2,10 +2,10 @@
     <header v-if="componentVisible">
       <div class="logo-container">
         <div class="title-glass-wrapper">
-          <h1 class="text-logo">
-            LaoWang Nav
+          <div class="logo-wrapper">
+            <img src="@/assets/logo-new.png" alt="LaoWang Nav" class="img-logo" />
             <sup class="trademark">®</sup>
-          </h1>
+          </div>
         </div>
       </div>
       <!-- PageTitle removed to prevent duplicate text -->
@@ -73,7 +73,8 @@ export default {
     align-items: center;
     align-content: flex-start;
     @include phone {
-      flex-direction: column-reverse;
+      flex-direction: column;
+      gap: 0.5rem;
     }
   }
 
@@ -81,6 +82,11 @@ export default {
     display: flex;
     align-items: center;
     padding-left: 1rem;
+    @include phone {
+      width: 100%;
+      justify-content: center;
+      padding-left: 0;
+    }
   }
 
   .header-right {
@@ -89,8 +95,10 @@ export default {
     gap: 1rem;
 
     @include phone {
+      width: 100%;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.2rem;
+      justify-content: center;
     }
   }
 
@@ -102,59 +110,55 @@ export default {
     position: relative;
     padding: 0.5rem 1rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
 
     &:hover {
       transform: translateY(-2px);
     }
   }
 
-  .text-logo {
+  .logo-wrapper {
     position: relative;
-    font-size: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .img-logo {
+    height: 3.5rem; /* Adjust height as needed for desktop */
+    width: auto;
+    display: block;
+    
+    @include phone {
+      height: 2.8rem; /* Smaller on mobile */
+    }
+  }
+
+  .trademark {
+    position: absolute;
+    top: -0.2rem;
+    right: -0.8rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin: 0;
-    font-family: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    letter-spacing: -0.5px;
+    color: #fff; /* Make sure it's visible */
+    opacity: 0.9;
+    
+    /* Optional: keep the rainbow effect for the R symbol if desired, or just white */
     background: linear-gradient(90deg,
-      #ff0000 0%,   /* 红 */
-      #ff7f00 14%,  /* 橙 */
-      #ffff00 28%,  /* 黄 */
-      #00ff00 42%,  /* 绿 */
-      #00ffff 57%,  /* 青 */
-      #0000ff 71%,  /* 蓝 */
-      #8b00ff 85%,  /* 紫 */
-      #ff0000 100%  /* 回到红 */
+      #ff0000 0%,
+      #ff7f00 14%,
+      #ffff00 28%,
+      #00ff00 42%,
+      #00ffff 57%,
+      #0000ff 71%,
+      #8b00ff 85%,
+      #ff0000 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: none;
     animation: rainbowFlow 10s linear infinite;
-
-    .trademark {
-      position: absolute;
-      top: 0.2rem;
-      right: -1.2rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      opacity: 0.9;
-      background: linear-gradient(90deg,
-        #ff0000 0%,
-        #ff7f00 14%,
-        #ffff00 28%,
-        #00ff00 42%,
-        #00ffff 57%,
-        #0000ff 71%,
-        #8b00ff 85%,
-        #ff0000 100%
-      );
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: rainbowFlow 10s linear infinite;
-    }
   }
 
   @keyframes rainbowFlow {
@@ -168,17 +172,13 @@ export default {
 
   @include phone {
     .title-glass-wrapper {
-      padding: 0.8rem 2rem;
+      padding: 0.5rem 1rem;
     }
 
-    .text-logo {
-      font-size: 1.8rem;
-
-      .trademark {
-        font-size: 0.7rem;
-        top: 0.2rem;
-        right: -0.7rem;
-      }
+    .trademark {
+      font-size: 0.7rem;
+      top: -0.1rem;
+      right: -0.6rem;
     }
   }
 </style>
