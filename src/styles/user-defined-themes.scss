@@ -8,5 +8,72 @@
 //   --background: #141b33;
 //   --background-darker: #060913;
 // }
+/* Chatspss 风格主题 */
+html[data-theme='chatspss-style'] {
+  --primary: #4A90E2; /* 主色蓝 */
+  --secondary: #f0f4f8; /* 背景色 */
+  --accent: #007ACC; /* 高亮色 */
+  --text-color: #333; /* 正文文字 */
+  --text-light: #666; /* 次文字 */
+  --item-background: #ffffff; /* 卡片背景 */
+  --item-shadow: 0 2px 12px rgba(0,0,0,0.08); /* 卡片阴影 */
+  --item-hover-shadow: 0 6px 20px rgba(0,0,0,0.12); /* 悬浮阴影 */
+  --border-radius: 12px; /* 圆角 */
+  --transition-speed: 0.3s; /* 动画过渡 */
+}
+
+/* 卡片和按钮效果 */
+html[data-theme='chatspss-style'] .there-are-items .item,
+html[data-theme='chatspss-style'] .add-new-item a,
+html[data-theme='chatspss-style'] button {
+  background: var(--item-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--item-shadow);
+  transition: all var(--transition-speed) ease;
+}
+
+html[data-theme='chatspss-style'] .there-are-items .item:hover,
+html[data-theme='chatspss-style'] .add-new-item a:hover,
+html[data-theme='chatspss-style'] button:hover {
+  box-shadow: var(--item-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* 搜索框风格 */
+html[data-theme='chatspss-style'] input,
+html[data-theme='chatspss-style'] .search-box input {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 0.8rem;
+  transition: all var(--transition-speed) ease;
+}
+
+html[data-theme='chatspss-style'] input:focus,
+html[data-theme='chatspss-style'] .search-box input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.3);
+  outline: none;
+}
+
+/* 标题和文字风格 */
+html[data-theme='chatspss-style'] h1,
+html[data-theme='chatspss-style'] h2,
+html[data-theme='chatspss-style'] h3,
+html[data-theme='chatspss-style'] .heading {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+html[data-theme='chatspss-style'] body,
+html[data-theme='chatspss-style'] p,
+html[data-theme='chatspss-style'] span {
+  color: var(--text-light);
+}
+
+/* 可选：整体背景 */
+html[data-theme='chatspss-style'] body {
+  background: var(--secondary);
+}
+
 
 // For more info, see: https://github.com/tony-wang1990/laowang-nav/blob/master/docs/theming.md
