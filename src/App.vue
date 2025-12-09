@@ -92,6 +92,14 @@ export default {
     },
   },
   methods: {
+    
+    
+    setDefaultTheme() {
+      const defaultTheme = 'chatspss-style'; // 你的新主题名称
+      this.$store.commit(Keys.SET_THEME, defaultTheme);
+      this.updateTheme(defaultTheme);
+      document.documentElement.setAttribute('data-theme', defaultTheme);
+    },
     /* Injects the users custom CSS as a style tag */
     injectCustomStyles(usersCss) {
       const style = document.createElement('style');
@@ -168,6 +176,7 @@ export default {
     this.applyLanguage(); // Apply users local language
     this.applyThemeBasedOnOSPreference(); // Apply theme based on OS preference
     this.hideSplash(); // Hide the splash screen, if visible
+    this.setDefaultTheme();
     if (this.appConfig.customCss) { // Inject users custom CSS, if present
       const cleanedCss = this.appConfig.customCss.replace(/<\/?[^>]+(>|$)/g, '');
       this.injectCustomStyles(cleanedCss);
@@ -187,7 +196,7 @@ export default {
 @import '@/styles/typography.scss';
 @import '@/styles/user-defined-themes.scss';
 
-/* Fix for Deep Ocean theme background consistency */
+/* Fix for Deep Ocean theme background consistency 
 html[data-theme='deep-ocean'] {
   #laowang {
     background-color: #151e2d;
@@ -199,5 +208,7 @@ html[data-theme='deep-ocean'] {
   .options-container {
     background: transparent !important;
   }
-}
+} 
+*/
+  
 </style>
